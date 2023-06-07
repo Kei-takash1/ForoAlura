@@ -1,0 +1,5 @@
+ALTER TABLE topico 
+ADD COLUMN activo TINYINT NULL AFTER autor_id;
+
+ALTER TABLE respuesta
+ADD COLUMN activo TINYINT NULL AFTER topico_id;
