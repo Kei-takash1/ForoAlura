@@ -37,7 +37,7 @@ public class RespuestaController {
 	}
 	
 	@GetMapping
-	public List<Object[]> listarRespuesta(){
+	public List<Respuesta> listarRespuesta(){
 		return service.listarRespuesta();
 	}
 	

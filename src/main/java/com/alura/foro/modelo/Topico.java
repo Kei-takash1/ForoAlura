@@ -34,7 +34,7 @@ import lombok.Setter;
 @EqualsAndHashCode(of = "id")
 public class Topico {
 	
-	private boolean activo;
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,7 +65,4 @@ public class Topico {
 	    return usuario;
 	  }
 	
-	public void desactivarTopico() {
-		this.activo = false;
-	}
 }
