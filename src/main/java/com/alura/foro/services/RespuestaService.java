@@ -25,20 +25,20 @@ public class RespuestaService {
 		return respuestaInterfaceRepositorio.save(respuesta);
 	}
 	
-	public List<Respuesta> listarRespuesta(){
-		return respuestaInterfaceRepositorio.findAll();
+	public List<Object[]> listarRespuesta(){
+		return respuestaInterfaceRepositorio.findByActivoTrue();
 	}
 	
 	public void eliminarRespuesta(Long id) {
-		respuestaInterfaceRepositorio.deleteById(id);
+		respuestaInterfaceRepositorio.eliminarRespuesta(id);
 	}
 	
 	public void modificarRespuesta(Respuesta respuesta) {
 		respuestaInterfaceRepositorio.save(respuesta);
 	}
 	
-	public Respuesta buscarRespuesta(Long id){
-		return respuestaInterfaceRepositorio.findById(id).orElse(null);
+	public List<Object[]> buscarRespuesta(Long id){
+		return respuestaInterfaceRepositorio.findByIdActivo(id);
 	}
 
 }

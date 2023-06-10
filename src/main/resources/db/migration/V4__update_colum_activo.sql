@@ -1,0 +1,5 @@
+ALTER TABLE respuesta 
+CHANGE COLUMN activo activo INT NULL DEFAULT 1;
+
+ALTER TABLE topico 
+CHANGE COLUMN activo activo INT NULL DEFAULT 1;

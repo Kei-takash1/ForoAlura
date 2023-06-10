@@ -37,7 +37,7 @@ public class RespuestaController {
 	}
 	
 	@GetMapping
-	public List<Respuesta> listarRespuesta(){
+	public List<Object[]> listarRespuesta(){
 		return service.listarRespuesta();
 	}
 	
@@ -53,7 +53,7 @@ public class RespuestaController {
 	}
 	
 	@GetMapping("{id}")
-	public Respuesta buscarRespuesta(@PathVariable Long id){
+	public List<Object[]> buscarRespuesta(@PathVariable Long id){
 		return service.buscarRespuesta(id);
 	}
 	

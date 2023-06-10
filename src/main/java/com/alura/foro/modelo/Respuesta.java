@@ -48,4 +48,7 @@ public class Respuesta {
 	@ManyToOne
 	@JoinColumn(name = "topico_id")
 	private Topico topico;
+	
+	@Column(name = "activo")
+	private Long activo;
 }
