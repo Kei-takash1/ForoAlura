@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.alura.foro.modelo.Respuesta;
 import com.alura.foro.repositorio.RespuestaInterfaceRepositorio;
+import com.alura.foro.services.dto.RespuestaDTO;
 
 @Service
 public class RespuestaService {
@@ -37,8 +38,14 @@ public class RespuestaService {
 		respuestaInterfaceRepositorio.save(respuesta);
 	}
 	
-	public List<Object[]> buscarRespuesta(Long id){
-		return respuestaInterfaceRepositorio.findByIdActivo(id);
+	public RespuestaDTO buscarRespuesta(Long id){
+		Respuesta respuesta = respuestaInterfaceRepositorio.findByIdAndActivoTrue(id);
+		
+		RespuestaDTO respuestaDTO = new RespuestaDTO(respuesta.getMensaje(), 
+				respuesta.getFechaCreacion(), respuesta.getSolucion(), 
+				respuesta.getAutor(), respuesta.getTopico());
+		
+		return respuestaDTO;
 	}
 
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alura.foro.modelo.Respuesta;
 import com.alura.foro.modelo.Topico;
 import com.alura.foro.services.RespuestaService;
+import com.alura.foro.services.dto.RespuestaDTO;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -53,7 +54,7 @@ public class RespuestaController {
 	}
 	
 	@GetMapping("{id}")
-	public List<Object[]> buscarRespuesta(@PathVariable Long id){
+	public RespuestaDTO buscarRespuesta(@PathVariable Long id){
 		return service.buscarRespuesta(id);
 	}
 	
