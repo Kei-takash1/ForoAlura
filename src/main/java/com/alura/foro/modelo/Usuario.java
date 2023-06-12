@@ -41,7 +41,7 @@ public class Usuario {
 	
 	@Column(name = "password")
 	@NotBlank
-	private String contrasena;
+	private String password;
 	
 	@OneToMany(mappedBy = "usuario")
 	@JsonProperty

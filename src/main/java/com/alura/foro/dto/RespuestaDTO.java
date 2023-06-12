@@ -1,4 +1,4 @@
-package com.alura.foro.services.dto;
+package com.alura.foro.dto;
 
 import com.alura.foro.modelo.StatusTopico;
 import com.alura.foro.modelo.Topico;
@@ -15,18 +15,18 @@ public class RespuestaDTO {
 	private String mensaje;
 	private String fechaCreacion;
 	private StatusTopico solucion;
-	private Usuario autor;
-	private Topico topico;
+	private String autor;
+	private String topico;
 	
 	public RespuestaDTO() {
 		super();
 	}
-	public RespuestaDTO(String mensaje, String fechaCreacion, StatusTopico solucion, Usuario usuario, Topico topico) {
+	public RespuestaDTO(String mensaje, String fechaCreacion, StatusTopico solucion, String autor, String topico) {
 		super();
 		this.mensaje = mensaje;
 		this.fechaCreacion = fechaCreacion;
 		this.solucion = solucion;
-		this.autor = usuario;
+		this.autor = autor;
 		this.topico = topico;
 	}
 	

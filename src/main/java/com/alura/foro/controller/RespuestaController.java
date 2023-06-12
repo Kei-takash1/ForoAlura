@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alura.foro.dto.RespuestaDTO;
 import com.alura.foro.modelo.Respuesta;
 import com.alura.foro.modelo.Topico;
 import com.alura.foro.services.RespuestaService;
-import com.alura.foro.services.dto.RespuestaDTO;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.alura.foro.dto.RespuestaDTO;
 import com.alura.foro.modelo.Respuesta;
 import com.alura.foro.repositorio.RespuestaInterfaceRepositorio;
-import com.alura.foro.services.dto.RespuestaDTO;
 
 @Service
 public class RespuestaService {
@@ -43,7 +43,7 @@ public class RespuestaService {
 		
 		RespuestaDTO respuestaDTO = new RespuestaDTO(respuesta.getMensaje(), 
 				respuesta.getFechaCreacion(), respuesta.getSolucion(), 
-				respuesta.getAutor(), respuesta.getTopico());
+				respuesta.getAutor().getNombre(), respuesta.getTopico().getTitulo());
 		
 		return respuestaDTO;
 	}
