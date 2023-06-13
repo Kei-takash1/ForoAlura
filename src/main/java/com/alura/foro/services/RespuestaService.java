@@ -2,6 +2,7 @@ package com.alura.foro.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,21 @@ public class RespuestaService {
 		return respuestaInterfaceRepositorio.save(respuesta);
 	}
 	
-	public List<Object[]> listarRespuesta(){
-		return respuestaInterfaceRepositorio.findByActivoTrue();
+	public List<RespuestaDTO> listarRespuesta(){
+		return respuestaInterfaceRepositorio.findByActivoTrue()
+				.stream()
+				.map(this::converEntityToDTO)
+				.collect(Collectors.toList());
+	}
+	
+	private RespuestaDTO converEntityToDTO(Respuesta respuesta) {
+		RespuestaDTO respuestaDTO = new RespuestaDTO();
+		respuestaDTO.setMensaje(respuesta.getMensaje());
+		respuestaDTO.setFechaCreacion(respuesta.getFechaCreacion());
+		respuestaDTO.setSolucion(respuesta.getSolucion());
+		respuestaDTO.setAutor(respuesta.getAutor().getNombre());
+		respuestaDTO.setTopico(respuesta.getTopico().getTitulo());
+		return respuestaDTO;
 	}
 	
 	public void eliminarRespuesta(Long id) {

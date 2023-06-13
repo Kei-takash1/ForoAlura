@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.alura.foro.dto.TopicoDTO;
 import com.alura.foro.modelo.Topico;
 import com.alura.foro.services.TopicoService;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.val;
 
@@ -41,11 +44,12 @@ public class TopicoController {
 	}
 	
 	@GetMapping
-	public List<Topico> listarTopico(){
+	public List<TopicoDTO> listarTopico(){
 		return service.listarTopico();
 	}
 	
 	@DeleteMapping("{id}")
+	@Transactional
 	public void eliminarTopico(@PathVariable Long id) {
 		service.eliminarTopico(id);
 	}

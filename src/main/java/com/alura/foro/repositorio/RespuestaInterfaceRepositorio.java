@@ -10,12 +10,12 @@ import com.alura.foro.modelo.Respuesta;
 
 public interface RespuestaInterfaceRepositorio extends JpaRepository<Respuesta, Long>{
 	
-	@Query("SELECT r.mensaje, r.solucion, u.nombre, t.titulo, t.mensaje AS usuario "
-			+ "FROM Respuesta r "
-			+ "INNER JOIN Usuario u ON r.autor = u.id "
-			+ "INNER JOIN Topico t ON r.topico = t.id "
-			+ "WHERE r.activo = 1")
-	List<Object[]> findByActivoTrue();
+//	@Query("SELECT r.mensaje, r.solucion, u.nombre, t.titulo, t.mensaje "
+//			+ "FROM Respuesta r "
+//			+ "INNER JOIN Usuario u ON r.autor = u.id "
+//			+ "INNER JOIN Topico t ON r.topico = t.id "
+//			+ "WHERE r.activo = 1")
+	List<Respuesta> findByActivoTrue();
 	
 	@Modifying
 	@Query("UPDATE Respuesta SET activo = 0 WHERE id = ?1")

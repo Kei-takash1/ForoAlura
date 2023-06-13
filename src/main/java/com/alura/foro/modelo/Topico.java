@@ -63,4 +63,6 @@ public class Topico {
 	    return usuario;
 	  }
 	
+	private Long activo;
+	
 }

@@ -1,12 +1,12 @@
 package com.alura.foro.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.alura.foro.controller.TopicoController;
+import com.alura.foro.dto.TopicoDTO;
 import com.alura.foro.modelo.Topico;
 import com.alura.foro.repositorio.TopicoInterfaceRepositorio;
 
@@ -25,12 +25,27 @@ public class TopicoService {
 		return topicoInterfaceRepositorio.save(topico);
 	}
 	
-	public List<Topico> listarTopico(){
-		return topicoInterfaceRepositorio.findAll();
+	public List<TopicoDTO> listarTopico(){
+		return topicoInterfaceRepositorio.findAllByActivoTrue()
+				.stream()
+				.map(this::converEntityToDTO)
+				.collect(Collectors.toList());
 	}
 	
+	private TopicoDTO converEntityToDTO(Topico topico) {
+		TopicoDTO topicoDTO = new TopicoDTO();
+		topicoDTO.setId(topico.getId());
+		topicoDTO.setTitulo(topico.getTitulo());
+		topicoDTO.setMensaje(topico.getMensaje());
+		topicoDTO.setCurso(topico.getCurso());
+		topicoDTO.setFechaCreacion(topico.getFechaCreacion());
+		topicoDTO.setStatus(topico.getStatus());
+		topicoDTO.setUsuario(topico.getUsuario().getNombre());
+		return topicoDTO;
+		}
+	
 	public void eliminarTopico(Long id) {
-		topicoInterfaceRepositorio.deleteById(id);
+		topicoInterfaceRepositorio.eliminarTopico(id);
 	}
 	
 	public void modificarTopico(Topico topico) {
